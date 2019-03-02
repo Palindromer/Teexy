@@ -1,0 +1,42 @@
+@import "../../colours.sass"
+
+.item-container:hover
+  background-color: lighten($item-border, 5.5%)
+  border-color: lighten($item-border, 5.5%)
+  cursor: pointer
+
+.challenges-container
+  margin-top: 30px
+
+.item-container
+  width: 100%
+  overflow: hidden
+  background-color: $item-color
+  transition: background-color .2s
+  border-bottom: 1px solid lighten($item-border, 4%)
+  padding: 20px 10px
+  position: relative
+  h2
+    font-size: 20px
+    line-height: 1.6
+    margin-bottom: 0
+  div
+    float: left
+  p.item__score
+    float: right
+    position: absolute
+    top: 50%
+    right: 10px
+    border: 2px solid lighten($item-border, 4%)
+    transform: translateY(-50%)
+    font-size: 14px
+    padding: 0 10px
+    border-radius: 20px
+  p
+    font-size: 14px
+    margin-bottom: 0
+
+.clearfix
+  clear: both
+  float: none !important
+  display: block

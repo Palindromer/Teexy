@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import './NavMenu.css';
+import './NavMenu.sass';
+
+import challenge from "../images/challenge.svg";
+import profile from "../images/user.svg";
+import home from "../images/home.svg";
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name;
@@ -24,24 +28,19 @@ export class NavMenu extends Component {
   render () {
     return (
       <header>
-        <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" light>
-          <Container>
-            <NavbarBrand tag={Link} to="/">Teexy</NavbarBrand>
-            <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-            <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
-              <ul className="navbar-nav flex-grow">
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
-                </NavItem>
-              </ul>
-            </Collapse>
-          </Container>
+        <Navbar className="nav">
+          <h2 className="nav__title">Teexy</h2>
+          <ul className="nav__list">
+            <NavItem>
+              <NavLink tag={Link} className="nav__item" to="/"><span className="text">All Challenges</span><span className="icon"><img src={home}/></span></NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={Link} className="nav__item" to="/challenges/my"><span className="text">My challenges</span><span className="icon"><img src={challenge}/></span></NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={Link} className="nav__item" to="/profile/my"><span className="text">My profile</span><span className="icon"><img src={profile}/></span></NavLink>
+            </NavItem>
+          </ul>
         </Navbar>
       </header>
     );
