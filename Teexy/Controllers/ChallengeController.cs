@@ -9,12 +9,11 @@ using Teexy.Models;
 namespace Teexy.Controllers
 {
 	[Route("api/[controller]")]
-	public class ChallengeController : Controller
+	public class ChallengesController : Controller
 	{
-
 		private ChallengeRepository _challengeRepository;
 
-		public ChallengeController(ChallengeRepository challengeRepository)
+		public ChallengesController(ChallengeRepository challengeRepository)
 		{
 			_challengeRepository = challengeRepository;
 		}
@@ -34,7 +33,7 @@ namespace Teexy.Controllers
 			return result;
 		}
 
-		[HttpGet("Save")]
+		[HttpPost("Save")]
 		public async Task<ActionResult> Save(Challenge challenge)
 		{
 			await _challengeRepository.Save(challenge);

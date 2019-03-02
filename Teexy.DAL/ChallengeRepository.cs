@@ -10,15 +10,15 @@ namespace Teexy.DAL
 {
 	public class ChallengeRepository : BaseRepository
 	{
-		public ChallengeRepository(string connectionString, IRepositoryContextFactory contextFactory)
-			: base(connectionString, contextFactory)
+		public ChallengeRepository(RepositoryContextFactory contextFactory)
+			: base(contextFactory)
 		{
 		}
 
 
 		public async Task<List<Challenge>> GetAll()
 		{
-			using (var context = ContextFactory.CreateDbContext(ConnectionString))
+			using (var context = ContextFactory.CreateDbContext())
 			{
 				var result = await context.Challenges.ToListAsync();
 				return result;
@@ -27,7 +27,7 @@ namespace Teexy.DAL
 
 		public async Task<Challenge> Get(int challengeId)
 		{
-			using (var context = ContextFactory.CreateDbContext(ConnectionString))
+			using (var context = ContextFactory.CreateDbContext())
 			{
 				var result = await context.Challenges.SingleOrDefaultAsync(ch => ch.Id == challengeId);
 				return result;

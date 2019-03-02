@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Teexy.DAL;
+using Teexy.Models;
 
 namespace Teexy
 {
@@ -23,14 +24,19 @@ namespace Teexy
 		{
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-			services.AddSingleton<IRepositoryContextFactory, RepositoryContextFactory>();
+			services.AddSingleton<RepositoryContextFactory, RepositoryContextFactory>();
 
-			var connStr = Configuration.GetConnectionString("DefaultConnection");
-			//var context = new RepositoryContextFactory().CreateDbContext(connStr);
+			//var connStr = Configuration.GetConnectionString("DefaultConnection");
+			//var context = new RepositoryContextFactory().CreateDbContext();
 			//new TeexyDBInitializer().Seed(context);
 
 
-			services.AddSingleton(provider => new ChallengeRepository(connStr, provider.GetService<IRepositoryContextFactory>()));
+			services.AddSingleton<ChallengeRepository>();
+
+
+			services.AddDefaultIdentity<User>()
+				.AddEntityFrameworkStores<RepositoryContext>();
+
 
 			// In production, the React files will be served from this directory
 			services.AddSpaStaticFiles(configuration =>
@@ -56,6 +62,8 @@ namespace Teexy
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 			app.UseSpaStaticFiles();
+
+			app.UseAuthentication();
 
 			app.UseMvc(routes =>
 			{

@@ -1,5 +1,8 @@
 ﻿using AutoFixture;
+using System;
+using System.Linq;
 using Teexy.Models;
+
 
 namespace Teexy.DAL
 {
@@ -10,11 +13,12 @@ namespace Teexy.DAL
 			context.Database.EnsureDeleted();
 			context.Database.EnsureCreated();
 			//context.Database.Migrate();
-
+			
 			var user = new User()
 			{
-				Id = 235,
-				Name = "Vasya"
+				Id = Guid.NewGuid().ToString(),
+				Name = "Vasya",
+				PasswordHash = "afweioj"
 			};
 
 			var userChallenge = new UserChallenge()
@@ -34,11 +38,10 @@ namespace Teexy.DAL
 			var fixture = new Fixture();
 
 			var userChList = fixture.Build<UserChallenge>()
-				.With(uch => uch.User, user)
+				.With(uch => uch.User, () => { return user; })
 				.With(uch => uch.Challenge, () => { return fixture.Create<Challenge>(); })
-				.CreateMany(20);
-
-
+				.CreateMany(20).ToList();
+			
 
 
 			context.UserChallenges.Add(userChallenge);

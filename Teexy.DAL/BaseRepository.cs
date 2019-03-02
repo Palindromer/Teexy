@@ -4,11 +4,10 @@
 	{
 		protected string ConnectionString { get; }
 
-		protected IRepositoryContextFactory ContextFactory { get; }
+		protected RepositoryContextFactory ContextFactory { get; }
 
-		public BaseRepository(string connectionString, IRepositoryContextFactory contextFactory)
+		public BaseRepository(RepositoryContextFactory contextFactory)
 		{
-			ConnectionString = connectionString;
 			ContextFactory = contextFactory;
 		}
 	}
