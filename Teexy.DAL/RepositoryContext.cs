@@ -30,7 +30,8 @@ namespace Teexy.DAL
 		protected override void OnConfiguring(DbContextOptionsBuilder builder)
 		{
 			builder.EnableSensitiveDataLogging(true);
-			builder.UseMySql("server=localhost;port=3306;UserId=rooter;Password=rooter;database=teexy;");
+			//builder.UseMySql("server=localhost;port=3306;UserId=rooter;Password=rooter;database=teexy;");
+			builder.UseMySql("server=palmysqlserver.mysql.database.azure.com; Port=3306; Database=Teexy; Uid=Palindromer@palmysqlserver; Pwd=jfrpz(*#5; SslMode=Preferred;");
 		}
 	}
 }
