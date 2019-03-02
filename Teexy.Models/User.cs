@@ -10,6 +10,10 @@ namespace Teexy.Models
 
 		public string Name { get; set; }
 
+		public string Email { get; set; }
+
+		public int Score { get; set; }
+
 		public List<UserChallenge> Challenges { get; set; }
 	}
 }

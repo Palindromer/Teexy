@@ -16,7 +16,7 @@ namespace Teexy.DAL
 		}
 
 
-		public async Task<List<Challenge>> GetChallenges()
+		public async Task<List<Challenge>> GetAll()
 		{
 			using (var context = ContextFactory.CreateDbContext(ConnectionString))
 			{
@@ -25,12 +25,21 @@ namespace Teexy.DAL
 			}
 		}
 
-		public async Task<Challenge> GetChallenge(int challengeId)
+		public async Task<Challenge> Get(int challengeId)
 		{
 			using (var context = ContextFactory.CreateDbContext(ConnectionString))
 			{
 				var result = await context.Challenges.SingleOrDefaultAsync(ch => ch.Id == challengeId);
 				return result;
+			}
+		}
+
+		public async Task Save(Challenge challenge)
+		{
+			using (var context = ContextFactory.CreateDbContext(ConnectionString))
+			{
+				var result = await context.Challenges.AddAsync(challenge);
+				await context.SaveChangesAsync();
 			}
 		}
 	}

@@ -26,10 +26,8 @@ namespace Teexy
 			services.AddSingleton<IRepositoryContextFactory, RepositoryContextFactory>();
 
 			var connStr = Configuration.GetConnectionString("DefaultConnection");
-			var context = new RepositoryContextFactory().CreateDbContext(connStr);
-			new TeexyDBInitializer().Seed(context);
-
-
+			//var context = new RepositoryContextFactory().CreateDbContext(connStr);
+			//new TeexyDBInitializer().Seed(context);
 
 
 			services.AddSingleton(provider => new ChallengeRepository(connStr, provider.GetService<IRepositoryContextFactory>()));

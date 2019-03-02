@@ -10,7 +10,6 @@ namespace Teexy.DAL
 			//optionsBuilder.UseMySql(connectionString);
 
 			var context = new RepositoryContext(optionsBuilder.Options);
-			context.Database.EnsureCreated();
 			return context;
 		}
 	}
