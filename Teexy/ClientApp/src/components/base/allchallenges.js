@@ -23,7 +23,7 @@ class Allchallenges extends React.Component{
         imgSrc: "logo1.jpg",
         id: 1,
         categorie: "ecology",
-        inProgress: true
+        inProgress: false
       },
       {
         title: "21 push up challenge у підтримку солдатів",
@@ -50,7 +50,7 @@ class Allchallenges extends React.Component{
         imgSrc: "logo4.jpg",
         id: 4,
         categorie: "love",
-        inProgress: true
+        inProgress: false
       },
       {
         title: "Пожелай 'хорошего дня' первым 10 прохожим :)",
@@ -68,7 +68,7 @@ class Allchallenges extends React.Component{
         imgSrc: "logo6.jpg",
         id: 6,
         categorie: "volunteer",
-        inProgress: false
+        inProgress: true
       },
       {
         title: "Посадити дерево",
@@ -112,8 +112,12 @@ class Allchallenges extends React.Component{
       }
     ]
     let mainPage = [];
+    let progres = 0;
     mainPage = info.map(function(item){
       const toLink = "/challenges/" + item.id;
+      if(item.inProgress){
+        progres++;
+      }
       return (
           <NavLink key = {item.id} tag={Link} className="nav__item" to={toLink}>
             <ChallengeItem inProgress = {item.inProgress}
@@ -129,7 +133,7 @@ class Allchallenges extends React.Component{
     })
     return (
       <div>
-        <Sidebar />
+        <Sidebar progres = {progres}/>
         <div className="challenges-container">{
             mainPage
         }</div>

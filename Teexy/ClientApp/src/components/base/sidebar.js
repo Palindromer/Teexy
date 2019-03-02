@@ -1,11 +1,11 @@
 import React from 'react';
 import "./sidebar.sass"
 
-function Sidebar(){
+function Sidebar(props){
   return(
     <div className="sidebar-container">
       <div className="sidebar__profile">
-        <img alt="Profile" src="/images/profile.jpg"/>
+        <img alt="Profile" src="/images/profile.jpg" />
         <div>
           <span className="name">Алексей Саракуз</span>
           <span className="worker">Volunteer</span>
@@ -14,7 +14,7 @@ function Sidebar(){
       <ul>
         <li>Все челенджи</li>
         <li>Самые новые</li>
-        <li className = "active">В прогрессе</li>
+        <li className = "active" date-quantity = {props.progres}>В прогрессе</li>
         <li>Самые популярные</li>
       </ul>
     </div>
