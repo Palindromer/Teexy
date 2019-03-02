@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teexy", "Teexy\Teexy.csproj", "{8D3D14CA-8947-44CB-A856-55F4083A5F06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teexy", "Teexy\Teexy.csproj", "{8D3D14CA-8947-44CB-A856-55F4083A5F06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teexy.Models", "Teexy.Models\Teexy.Models.csproj", "{31FC8097-DA32-4B53-B638-B1B36FA26D42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teexy.DAL", "Teexy.DAL\Teexy.DAL.csproj", "{899CD8B3-C351-4B08-8850-88098887B601}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{8D3D14CA-8947-44CB-A856-55F4083A5F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D3D14CA-8947-44CB-A856-55F4083A5F06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D3D14CA-8947-44CB-A856-55F4083A5F06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31FC8097-DA32-4B53-B638-B1B36FA26D42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31FC8097-DA32-4B53-B638-B1B36FA26D42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31FC8097-DA32-4B53-B638-B1B36FA26D42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31FC8097-DA32-4B53-B638-B1B36FA26D42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{899CD8B3-C351-4B08-8850-88098887B601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{899CD8B3-C351-4B08-8850-88098887B601}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{899CD8B3-C351-4B08-8850-88098887B601}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{899CD8B3-C351-4B08-8850-88098887B601}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
