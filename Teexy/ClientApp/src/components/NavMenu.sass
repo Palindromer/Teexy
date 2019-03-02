@@ -13,7 +13,20 @@
   padding: 0
   font-family: 'Roboto', serif
 
+@media (min-width: 501px)
+  nav.nav.navbar
+    background-color: #fff
+    padding: 27px 0
+  .nav__title
+    margin-left: 24.5%
+  .nav__list
+    display: none
+
 @media (max-width: 500px)
+  .item__left-mobile
+    display: block
+  .item__left-desktop
+    display: none !important
   nav.navbar.nav
     padding: 0
     position: fixed
@@ -23,11 +36,11 @@
     top: 0
     border-bottom: 2px solid lighten($item-border, 5%)
     h2
-      font-size: 16px
+      font-size: 20px
       line-height: 1.6
       margin-left: 10px
-      margin-top: 8px
-      margin-bottom: 8px
+      margin-top: 12px
+      margin-bottom: 12px
   .nav__list
     position: fixed
     width: 100%
