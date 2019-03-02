@@ -60,6 +60,15 @@
   img
     margin-top: 5px
 
+@media (max-width: 1044px)
+  html body .challenges-container
+    width: 70%
+    float: right
+    margin-top: 0
+    a
+      width: 47% !important
+
+
 @media (min-width: 501px)
   .item__description-container
     border-bottom: 2px solid #F3F2F8
@@ -88,12 +97,13 @@
     width: 76%
     float: right
     margin-top: 0
+    a
+      width: 30%
+      display: inline-block
+      margin-left: 1.3% !important
+      margin-right: 1.3% !important
     .item-container
-      width: 30.33%
-      margin-left: 1.5%
-      margin-right: 1.5%
       border-radius: 10px
-      float: left
       margin-top: 50px
       margin-bottom: 10px
       &::before
@@ -116,21 +126,40 @@
         height: 13px
         width: 100%
         background-color: #5841CB
+      // &.inProgress
+      //   background-color: #6641C8
+      //   color: #fff
+      //   &.volunteer
+      //     &::after
+      //       background-color: #341FA4
+      //     &::before
+      //       background-color: #341FA4
+      //   &.ecology
+      //     &::after
+      //       background-color: #341FA4
+      //     &::before
+      //       background-color: #341FA4
       &.volunteer
         &::after
           background-color: #5841CB
         &::before
           background-color: #5841CB
+        &.inProgress
+          // background-color: #6347FE
       &.honour
         &::after
           background-color: #F2C531
         &::before
           background-color: #F2C531
+        &.inProgress
+          // background-color: #6347FE
       &.ecology
         &::after
           background-color: darken(#75bc62, 6%)
         &::before
           background-color: darken(#75bc62, 6%)
+        &.inProgress
+          // background-color: #6641C8
 
   body
     background-color: #F3F2F8

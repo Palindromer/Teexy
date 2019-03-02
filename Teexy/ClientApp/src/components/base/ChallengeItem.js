@@ -4,6 +4,9 @@ import "./ChallengeItem.sass"
 function ChallengeItem(props){
   const src = "/images/" + props.imgSrc;
   let containerClass = "item-container " + props.categorie;
+  if(props.inProgress){
+    containerClass += " inProgress"
+  }
   return (
     <div className={containerClass} data-categorie = {props.categorie}>
       <div className="item__description-container">
