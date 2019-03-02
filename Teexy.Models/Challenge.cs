@@ -13,5 +13,9 @@ namespace Teexy.Models
 		public string Description { get; set; }
 
 		public int Score { get; set; }
+
+		public int JoinersCount { get; set; }
+
+		public bool IsActive { get; set; }
 	}
 }
