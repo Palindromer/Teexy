@@ -20,7 +20,9 @@ namespace Teexy.DAL
 		{
 			using (var context = ContextFactory.CreateDbContext())
 			{
-				var result = await context.Challenges.ToListAsync();
+				var result = await context.Challenges
+					.Include(ch => ch.Descriptions)
+					.ToListAsync();
 				return result;
 			}
 		}
@@ -29,7 +31,9 @@ namespace Teexy.DAL
 		{
 			using (var context = ContextFactory.CreateDbContext())
 			{
-				var result = await context.Challenges.SingleOrDefaultAsync(ch => ch.Id == challengeId);
+				var result = await context.Challenges
+					.Include(ch => ch.Descriptions)
+					.SingleOrDefaultAsync(ch => ch.Id == challengeId);
 				return result;
 			}
 		}
