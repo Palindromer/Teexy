@@ -1,0 +1,75 @@
+@import "../colours"
+.about-container
+  width: 73%
+  float: right
+  margin-right: 2%
+  .about__status, .about__logo, .about__views
+    img
+      width: 30px
+      height: 30px
+      border-radius: 50%
+
+.about__logo
+  box-sizing: border-box
+  position: absolute
+  bottom: -15px
+  left: 50%
+  transform: translateX(-50%) scale(2)
+  width: 40px
+  height: 40px
+  background-color: #fff
+  border-radius: 50%
+  svg
+    fill: #75BB63
+    width: 20px
+    height: 20px
+    transform: translate3d(10px, 7px, 0)
+
+.about-container
+  .about__background-image
+    padding: 60px 100px
+    position: relative
+    h2
+      font-size: 22px
+      font-weight: 100
+      text-align: center
+      margin-bottom: 40px
+      margin-top: 80px
+      color: #fff
+  .about__status
+    box-sizing: border-box
+    position: absolute
+    bottom: -43px
+    left: 40px
+    span
+      display: block
+    svg
+      fill: #75BB63
+      width: 20px
+      height: 20px
+      transform: translate3d(10px, 7px, 0)
+    div.svgStatus-container
+      margin: 0 auto
+      width: 40px
+      height: 40px
+      background-color: #fff
+      border-radius: 50%
+  .about__views
+    box-sizing: border-box
+    position: absolute
+    bottom: -43px
+    float: right
+    right: 40px
+    span
+      display: block
+    svg
+      fill: #75BB63
+      width: 20px
+      height: 20px
+      transform: translate3d(10px, 6px, 0)
+    div.svgStatus-container
+      margin: 0 auto
+      width: 40px
+      height: 40px
+      background-color: #fff
+      border-radius: 50%

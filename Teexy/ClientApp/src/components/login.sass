@@ -21,17 +21,28 @@
     &.facebook
       background-color: #48648B
       color: #fff
-      bottom: 130px
+      bottom: 120px
+      font-weight: 400
     &.instagram
       background: linear-gradient(-45deg, #B058AE, #E78857)
       color: #fff
-      bottom: 80px
+      bottom: 75px
+      font-family: cursive
+      cursor: pointer
+      span
+        img
+          width: 15px
+          height: 15px
+          margin-right: 5px
     &.google-auth
       background-color: #CF6955
       color: #fff
       bottom: 30px
 
 @media (max-width: 500px)
+  html body div.challenges-container a.nav__item.nav-link
+    margin-top: 0px
+    margin-bottom: 0px
   .login-container
     animation-duration: 12s
     overflow: hidden

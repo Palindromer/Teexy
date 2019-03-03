@@ -9,7 +9,7 @@ function LoginSocial(){
           <div className = "login-container login-container1"></div>
           <div className="social-buttons">
             <button className="facebook">facebook</button>
-            <button className="instagram">instagram</button>
+            <button className="instagram"><span><img src="/images/instagram.svg" alt="instagram"/></span>Instagram</button>
             <button className="google-auth">Google +</button>
           </div>
       </div>
