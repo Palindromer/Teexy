@@ -1,5 +1,60 @@
 @import "../../colours.sass"
 
+@media (max-width: 780px)
+  body .sidebar-container
+    ul
+      width: 85%
+
+@media (max-width: 700px)
+  .nav__title
+    margin-left: 40%
+  body .sidebar-container
+    width: 35%
+  html body .challenges-container
+    width: 65%
+  html
+    body
+      .challenges-container
+        a.nav__item.nav-link
+          width: 60% !important
+          margin-left: 20% !important
+          margin-right: 20%
+
+@media (max-width: 600px)
+  html
+    body
+      .challenges-container
+        a.nav__item.nav-link
+          width: 80% !important
+          margin-left: 10% !important
+          margin-right: 10%
+          display: block
+          margin-top: 20px
+          margin-bottom: 30px
+
+@media (max-width: 540px)
+  .nav__title
+    margin-left: 50%
+  body .sidebar-container
+    width: 45%
+    ul
+      width: 90%
+      margin-left: 5%
+  html body .challenges-container
+    width: 55%
+    h2
+      font-size: 16px !important
+
+@media (max-width: 501px)
+  .sidebar-container
+    display: none !important
+  .challenges-container
+    width: 100% !important
+  html body .challenges-container a.nav__item.nav-link
+    width: 100% !important
+    margin-left: 0 !important
+
+
 .sidebar-container
   float: left
   width: 23%

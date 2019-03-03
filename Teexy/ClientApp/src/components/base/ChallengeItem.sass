@@ -50,6 +50,13 @@
     margin-bottom: 0
     margin-left: 16%
 
+@media (max-width: 500px)
+  html body p
+    margin-left: 13% !important
+
+@media (max-width: 400px)
+  html body p
+    margin-left: 16% !important
 .clearfix
   clear: both
   float: none !important
@@ -102,10 +109,10 @@
       display: inline-block
       margin-left: 1.3% !important
       margin-right: 1.3% !important
+      margin-bottom: 10px !important
+      margin-top: 20px !important
     .item-container
       border-radius: 10px
-      margin-top: 50px
-      margin-bottom: 10px
       &::before
         content: attr(data-categorie)
         position: absolute
