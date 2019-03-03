@@ -6,9 +6,12 @@
 
 		protected RepositoryContextFactory ContextFactory { get; }
 
+		protected RepositoryContext RepositoryContext { get; }
+
 		public BaseRepository(RepositoryContextFactory contextFactory)
 		{
 			ContextFactory = contextFactory;
+			RepositoryContext = contextFactory.CreateDbContext();
 		}
 	}
 }

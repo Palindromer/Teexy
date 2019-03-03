@@ -46,5 +46,15 @@ namespace Teexy.DAL
 				await context.SaveChangesAsync();
 			}
 		}
+
+		public async Task<List<ChallengeProof>> GetProofs(int challengeId)
+		{
+			var proofs = await RepositoryContext.ChallengeProofs
+				.Where(proof => proof.Challenge.Id == challengeId)
+				.Include(proof => proof.User)
+				.ToListAsync();
+			return proofs;
+		}
 	}
+
 }

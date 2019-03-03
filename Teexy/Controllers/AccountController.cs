@@ -9,6 +9,7 @@ using Teexy.ViewModels;
 
 namespace Teexy.Controllers
 {
+	[Route("api/[controller]")]
 	public class AccountController : Controller
 	{
 		private readonly UserManager<User> _userManager;
@@ -20,19 +21,13 @@ namespace Teexy.Controllers
 			_signInManager = signInManager;
 		}
 
-		[HttpGet]
-		public IActionResult Register()
-		{
-			return View();
-		}
-
 		[HttpPost("[action]")]
 		public async Task<IActionResult> Register(RegisterViewModel model)
 		{
 			if (ModelState.IsValid)
 			{
 				var user = new User { Email = model.Email, UserName = model.Email };
-				
+
 				// добавляем пользователя
 				var result = await _userManager.CreateAsync(user, model.Password);
 				if (result.Succeeded)

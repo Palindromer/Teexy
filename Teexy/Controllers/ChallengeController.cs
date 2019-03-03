@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Teexy.DAL;
 using Teexy.Models;
+using Teexy.ViewModels;
 
 namespace Teexy.Controllers
 {
@@ -38,6 +40,14 @@ namespace Teexy.Controllers
 		{
 			await _challengeRepository.Save(challenge);
 			return Ok();
+		}
+
+		[HttpGet("{challengeId}/GetProofs")]
+		public async Task<IEnumerable<ChallengeProofViewModel>> GetProofs(int challengeId)
+		{
+			var proofs = (await _challengeRepository.GetProofs(challengeId))
+				.Select(pr => ChallengeProofViewModel.FromChallengeProof(pr));
+			return proofs;
 		}
 	}
 }

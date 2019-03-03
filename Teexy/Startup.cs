@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Teexy.DAL;
 using Teexy.Models;
+using Teexy.ViewModels;
 
 namespace Teexy
 {
@@ -32,7 +34,11 @@ namespace Teexy
 
 
 			services.AddSingleton<ChallengeRepository>();
+			services.AddSingleton<FileRepository>();
+			services.AddSingleton<UserRepository>();
 
+
+			Mapper.Initialize(cfg => cfg.CreateMap<User, IndexUserViewModel>());
 
 			services.AddDefaultIdentity<User>()
 				.AddEntityFrameworkStores<RepositoryContext>();

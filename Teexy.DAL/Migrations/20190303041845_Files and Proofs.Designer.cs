@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Teexy.DAL;
 
 namespace Teexy.DAL.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20190303041845_Files and Proofs")]
+    partial class FilesandProofs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,8 +69,6 @@ namespace Teexy.DAL.Migrations
                     b.Property<int?>("ChallengeId");
 
                     b.Property<int>("FileId");
-
-                    b.Property<int>("LikesCount");
 
                     b.Property<string>("UserId");
 
