@@ -24,7 +24,69 @@
     width: 20px
     height: 20px
     transform: translate3d(10px, 7px, 0)
-
+.about__tabs
+  padding-top: 90px
+  background-color: #fff
+  .about__description-content, .about__description-proves
+    background-color: #F3F2F8
+    padding-left: 20px
+    padding-top: 20px
+    h2
+      font-size: 16px
+    p
+      font-size: 14px
+  .about__descr
+    margin-left: 20px
+    padding-bottom: 10px
+    border-bottom: 2px solid #466FE3
+    &.true
+      border-bottom: 2px solid #466FE3
+    &.false
+      border-bottom-color: transparent
+  .about__description-proves
+    &.false
+      opacity: 0
+      height: 0
+      transition: opacity .5s, height .2s
+      padding: 0
+    &.true
+      opacity: 1
+      height: auto
+      transition: opacity .5s, height .2s
+      padding-top: 20px
+      padding-left: 20px
+  .about__description-content
+    p
+      margin-bottom: 0
+    &.false
+      opacity: 0
+      height: 0
+      transition: opacity .5s, height .2s
+      padding: 0
+    &.true
+      opacity: 1
+      height: auto
+      transition: opacity .5s, height .2s
+    a
+      display: block
+      text-align: center
+      cursor: pointer
+  .about__proves
+    margin-left: 30px
+    &.true
+      border-bottom: 2px solid #466FE3
+    &.false
+      border-bottom-color: transparent
+    a
+      display: block
+      text-align: center
+  div
+    &.active
+      color: #4570E2
+  .about__descr
+    float: left
+  .about__proves
+    float: left
 .about-container
   .about__background-image
     padding: 60px 100px

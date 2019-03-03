@@ -3,11 +3,36 @@ import Sidebar from './base/sidebar'
 import './aboutItem.sass'
 
 class Itemabout extends React.Component{
+  constructor(){
+    super()
+    this.state = {
+      first: true
+    }
+    this.changeState1 = this.changeState1.bind(this)
+    this.changeState2 = this.changeState2.bind(this)
+  }
+
+  changeState1(){
+    this.setState({first: true})
+  }
+
+  changeState2(){
+    this.setState({first: false})
+  }
+
   render(){
-    let aboutImageStyle = {backgroundImage: "url('" + "/images/bg1.jpg" + "')"};
+    var title = "Зачем мне этот челендж?";
+    var content = "Lorem ipsum dolorn sit ame, Lorem ipsum dolorn sit amet, Lorem ipsum dolorn sit ame, Lorem ipsum dolorn sit ame, Lorem ipsum dolorn sit ame, Lorem ipsum dolorn sit ame, Lorem ipsum dolorn sit ame, Lorem ipsum dolorn sit ame, Lorem ipsum dolorn sit ame, Lorem ipsum dolorn sit ame, Lorem ipsum dolorn sit ame, Lorem ipsum dolorn sit ame";
+    var items = ["Статистика", "Описание челенджа", "Выложенные челенджи"]
+    let aboutImageStyle = {backgroundImage: "url(/images/bg1.jpg)"};
+
+    let descrClass = "about__description-content " + this.state.first;
+    let provesClass = "about__description-proves " + !(this.state.first);
+    let about__descrClass = "about__descr " + (this.state.first);
+    let about__provesClass = "about__proves " + !(this.state.first);
     return(
       <div>
-        <Sidebar />
+        <Sidebar items={items}/>
         <div className="about-container">
           <div className="about__background-image" style = {aboutImageStyle}>
             <h2>Посадить дерево для оздоровления планеты</h2>
@@ -58,7 +83,18 @@ class Itemabout extends React.Component{
               <span>44,980</span>
             </div>
           </div>
-          
+          <div className="about__tabs">
+            <div className={about__descrClass} onClick = {this.changeState1}><a>Описание челенджа</a></div>
+            <div className={about__provesClass} onClick = {this.changeState2}><a>Выложенные челенджи</a></div>
+            <div className="clearfix"></div>
+            <div className={descrClass}>
+              <h2>{title}</h2>
+              <p>{content}</p>
+            </div>
+            <div className={provesClass}>
+              123122312
+            </div>
+          </div>
         </div>
       </div>
     )

@@ -28,7 +28,7 @@ export class NavMenu extends Component {
           <h2 className="nav__title">Teexy</h2>
           <ul className="nav__list">
             <NavItem>
-              <NavLink tag={Link} className="nav__item" to="/"><span className="text">All Challenges</span><span className="icon"><img src="/images/home.svg" alt="home"/></span></NavLink>
+              <NavLink tag={Link} className="nav__item" to="/"><span className="text">All Challenges</span><span className="icon"><img src="/images/home.png" alt="home"/></span></NavLink>
             </NavItem>
             <NavItem>
               <NavLink tag={Link} className="nav__item" to="/challenges/my"><span className="text">My challenges</span><span className="icon"><img src="/images/challenge.svg" alt="challenge"/></span></NavLink>

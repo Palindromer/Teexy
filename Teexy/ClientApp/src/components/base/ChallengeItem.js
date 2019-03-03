@@ -24,6 +24,14 @@ function ChallengeItem(props){
           <img src={src} alt={props.title}/>
         </div>
       </div>
+      <div className="item__counters-mobile">
+        <div className="counters-left">
+          <span><img alt="People complited this challenge" src="/images/add-friend.svg"/></span>{props.processNum}
+        </div>
+        <div className="counters-right">
+          <span><img alt="Score you can achieve" src="/images/diamond-3.svg"/></span>{props.score}
+        </div>
+      </div>
       <div className="item__counters-desktop">
         <div className="item__progress">
           <span className="item__profile">

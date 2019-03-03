@@ -131,9 +131,10 @@ class Allchallenges extends React.Component{
 
       );
     })
+    var categories = ["Все челенджи", "В процессе", "Популярные"]
     return (
       <div>
-        <Sidebar progres = {progres}/>
+        <Sidebar progres = {progres} items = {categories} />
         <div className="challenges-container">{
             mainPage
         }</div>

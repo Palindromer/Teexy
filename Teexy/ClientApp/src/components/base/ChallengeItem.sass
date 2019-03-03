@@ -50,9 +50,99 @@
     margin-bottom: 0
     margin-left: 16%
 
+.counters-left
+  display: none
+
+.counters-right
+  display: none
+
+@media (max-width: 1044px)
+  .nav__title
+    margin-left: 30.5%
+  html .about-container
+    width: 67.5%
+
+@media (max-width: 931px)
+  html .sidebar-container ul
+    width: 90%
+
+@media (max-width: 825px)
+  .sidebar-container .sidebar__profile
+    img
+      float: none
+    div
+      float: none
+
+@media (max-width: 768px)
+  html .sidebar-container ul
+    width: 100%
+
+
+@media (max-width: 700px)
+  html .about-container
+    width: 63%
+
 @media (max-width: 500px)
+  html body div.challenges-container a.nav__item.nav-link
+    width: 90% !important
+    margin-left: 5% !important
+    border-radius: 12px
+    background-color: rgb(255, 255, 255)
+    box-shadow: 0px 6px 24px 0px rgba(39, 39, 39, 0.06)
+    margin-top: 10px !important
+    margin-bottom: 10px !important
+  html body .counters-left
+    display: block
+    float: left
+    color: #4670E3
+    img
+      width: 20px
+      display: inline-block
+      vertical-align: middle
+    span
+      display: inline-block
+      vertical-align: middle
+
+  html body .counters-right
+    display: block
+    float: right
+    color: #75BC62
+    img
+      width: 20px
+      display: inline-block
+      vertical-align: middle
+    span
+      display: inline-block
+      vertical-align: middle
+
+  .item-container p.item__score
+    display: none
+  .challenges-container
+    margin-top: 58px !important
+  html body div.item__right h2
+    font-size: 14px !important
+    margin-bottom: 0
+    margin-right: 30px
+  .item__right
+    display: inline-block
+    vertical-align: middle
+    width: 87%
+  .item__left-mobile
+    width: 13%
+    vertical-align: middle
+    display: inline-block !important
+    float: none !important
+    img
+      margin: 0 !important
+      padding: 0 !important
+      margin-right: 10px
+      width: 30px
+      height: 30px
+      border-radius: 50%
   html body p
     margin-left: 13% !important
+  .item__right div p
+    display: none
 
 @media (max-width: 400px)
   html body p

@@ -2,6 +2,17 @@ import React from 'react';
 import "./sidebar.sass"
 
 function Sidebar(props){
+  let categories = props.items;
+  var q = 0;
+  let newCategories = categories.map((item) => {
+    if(q === 0){
+      q++
+      return (<li className='active' key = {q} >{item}</li>);
+    }else{
+      q++
+      return (<li key = {q}>{item}</li>);
+    }
+  })
   return(
     <div className="sidebar-container">
       <div className="sidebar__profile">
@@ -12,10 +23,7 @@ function Sidebar(props){
         </div>
       </div>
       <ul>
-        <li>Все челенджи</li>
-        <li>Самые новые</li>
-        <li className = "active" date-quantity = {props.progres}>В прогрессе</li>
-        <li>Самые популярные</li>
+        {newCategories}
       </ul>
     </div>
   )
