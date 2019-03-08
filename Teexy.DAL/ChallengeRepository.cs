@@ -47,11 +47,11 @@ namespace Teexy.DAL
 			}
 		}
 
-		public async Task<List<ChallengeProof>> GetProofs(int challengeId)
+		public async Task<List<UserChallenge>> GetProofs(int challengeId)
 		{
-			var proofs = await RepositoryContext.ChallengeProofs
-				.Where(proof => proof.Challenge.Id == challengeId)
-				.Include(proof => proof.User)
+			var proofs = await RepositoryContext.UserChallenges
+				.Where(uch => uch.Challenge.Id == challengeId)
+				.Include(uch => uch.User)
 				.ToListAsync();
 			return proofs;
 		}

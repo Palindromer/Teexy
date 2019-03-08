@@ -22,6 +22,6 @@ namespace Teexy.Models
 
 		public int JoinersCount { get; set; }
 
-		public bool IsActive { get; set; }
+		public bool IsActive { get; set; } = true;
 	}
 }

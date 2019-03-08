@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Teexy.DAL;
+using Teexy.Mapping;
 using Teexy.Models;
 using Teexy.ViewModels;
 
@@ -37,8 +38,8 @@ namespace Teexy
 			services.AddSingleton<FileRepository>();
 			services.AddSingleton<UserRepository>();
 
-
-			Mapper.Initialize(cfg => cfg.CreateMap<User, IndexUserViewModel>());
+			Mapper.Initialize(cfg => cfg.AddProfile<MappingProfile>());
+			services.AddAutoMapper();
 
 			services.AddDefaultIdentity<User>()
 				.AddEntityFrameworkStores<RepositoryContext>();

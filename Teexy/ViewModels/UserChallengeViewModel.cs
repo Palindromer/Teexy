@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AutoMapper;
+using Teexy.Models;
 
-namespace Teexy.Models
+namespace Teexy.ViewModels
 {
-	public class ChallengeProof
+	public class UserChallengeViewModel
 	{
 		public int Id { get; set; }
 
 		/// <summary>
 		/// Proof.
 		/// </summary>
-		public int FileId { get; set; }
+		public string FileUrl { get; set; }
 
 		/// <summary>
 		/// Wich challenge was done?
@@ -21,8 +20,10 @@ namespace Teexy.Models
 		/// <summary>
 		/// Who performed the challenge?
 		/// </summary>
-		public User User { get; set; }
+		public IndexUserViewModel User { get; set; }
 
 		public int LikesCount { get; set; }
+
+		public int CommentsCount { get; set; }
 	}
 }

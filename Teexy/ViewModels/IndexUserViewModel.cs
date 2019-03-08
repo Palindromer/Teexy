@@ -12,11 +12,5 @@ namespace Teexy.ViewModels
 		public string Id { get; set; }
 
 		public string Name { get; set; }
-
-		public static IndexUserViewModel FromUser(User user)
-		{
-			var userViewModel = Mapper.Map<User, IndexUserViewModel>(user);
-			return userViewModel;
-		}
 	}
 }

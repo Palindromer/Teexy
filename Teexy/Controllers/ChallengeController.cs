@@ -15,9 +15,12 @@ namespace Teexy.Controllers
 	{
 		private ChallengeRepository _challengeRepository;
 
-		public ChallengesController(ChallengeRepository challengeRepository)
+		private readonly IMapper _mapper;
+
+		public ChallengesController(ChallengeRepository challengeRepository, IMapper mapper)
 		{
 			_challengeRepository = challengeRepository;
+			_mapper = mapper;
 		}
 
 
@@ -43,10 +46,10 @@ namespace Teexy.Controllers
 		}
 
 		[HttpGet("{challengeId}/GetProofs")]
-		public async Task<IEnumerable<ChallengeProofViewModel>> GetProofs(int challengeId)
+		public async Task<IEnumerable<UserChallengeViewModel>> GetProofs(int challengeId)
 		{
 			var proofs = (await _challengeRepository.GetProofs(challengeId))
-				.Select(pr => ChallengeProofViewModel.FromChallengeProof(pr));
+				.Select(pr => _mapper.Map<UserChallengeViewModel>(pr));
 			return proofs;
 		}
 	}

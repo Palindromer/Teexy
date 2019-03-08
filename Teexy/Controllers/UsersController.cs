@@ -20,10 +20,13 @@ namespace Teexy.Controllers
 
 		private readonly UserManager<User> _userManager;
 
-		public UsersController(UserRepository userRepository, UserManager<User> userManager)
+		private readonly IMapper _mapper;
+
+		public UsersController(UserRepository userRepository, UserManager<User> userManager, IMapper mapper)
 		{
 			_userRepository = userRepository;
 			_userManager = userManager;
+			_mapper = mapper;
 		}
 
 		[Authorize]
@@ -31,14 +34,14 @@ namespace Teexy.Controllers
 		public async Task<IndexUserViewModel> My()
 		{
 			var user = await _userManager.GetUserAsync(this.User);
-			return IndexUserViewModel.FromUser(user);
+			return _mapper.Map<IndexUserViewModel>(user);
 		}
 
 		[HttpGet("{id}")]
 		public async Task<IndexUserViewModel> GetUser(string id)
 		{
 			var user = await _userRepository.Get(id);			
-			return IndexUserViewModel.FromUser(user);
+			return _mapper.Map<IndexUserViewModel>(user);
 		}
 	}
 }

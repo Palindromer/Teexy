@@ -28,8 +28,6 @@ namespace Teexy.DAL
 
 		public DbSet<ChallengeDecription> ChallengeDecriptions { get; set; }
 
-		public DbSet<ChallengeProof> ChallengeProofs { get; set; }
-
 		public DbSet<File> Files { get; set; }
 
 		protected override void OnConfiguring(DbContextOptionsBuilder builder)
