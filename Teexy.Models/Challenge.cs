@@ -22,6 +22,10 @@ namespace Teexy.Models
 
 		public int JoinersCount { get; set; }
 
+		public int? QuotaCount { get; set; }
+
 		public bool IsActive { get; set; } = true;
+
+		public ChallengeCategory Category { get; set; }
 	}
 }

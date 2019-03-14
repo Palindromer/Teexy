@@ -5,6 +5,7 @@ namespace Teexy.ViewModels
 	public class LoginViewModel
 	{
 		[Required]
+		[EmailAddress(ErrorMessage = "Некоректна Email-адреса")]
 		public string Email { get; set; }
 
 		[Required]

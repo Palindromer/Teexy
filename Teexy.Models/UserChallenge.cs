@@ -12,11 +12,13 @@ namespace Teexy.Models
 
 		public ChallengeStatus Status { get; set; }
 
-		public int ProofFileId { get; set; }
+		public int? ProofFileId { get; set; }
 
-		public int LikesCount { get; set; }
+		public File ProofFile { get; set; }
 
-		public int CommentCount { get; set; }
+		public int? LikesCount { get; set; }
+
+		public int? CommentsCount { get; set; }
 
 		public List<UserChallengeLike> Likes { get; set; }
 

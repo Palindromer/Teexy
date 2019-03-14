@@ -42,10 +42,9 @@ namespace Teexy.Controllers
 					{
 						ModelState.AddModelError(string.Empty, error.Description);
 					}
-					return StatusCode(401);
 				}
 			}
-			return StatusCode(401);
+			return StatusCode(401, ModelState.Values.SelectMany(v => v.Errors));
 		}
 
 		[HttpPost("[action]")]
@@ -53,8 +52,7 @@ namespace Teexy.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				var result =
-					await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+				var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
 				if (result.Succeeded)
 				{
 					// проверяем, принадлежит ли URL приложению
@@ -62,11 +60,10 @@ namespace Teexy.Controllers
 				}
 				else
 				{
-					ModelState.AddModelError("", "Неправильный логин и (или) пароль");
-					return Forbid();
+					ModelState.AddModelError("", "Неправильний логін і (або) пароль");
 				}
 			}
-			return Forbid();
+			return StatusCode(401, ModelState.Values.SelectMany(v => v.Errors));
 		}
 
 		[HttpPost("[action]")]

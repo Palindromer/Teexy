@@ -2,18 +2,12 @@
 
 namespace Teexy.DAL.Migrations
 {
-    public partial class ChallengeFileds : Migration
+    public partial class Third : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<bool>(
-                name: "IsActive",
-                table: "Challenges",
-                nullable: false,
-                defaultValue: false);
-
             migrationBuilder.AddColumn<int>(
-                name: "JoinersCount",
+                name: "Category",
                 table: "Challenges",
                 nullable: false,
                 defaultValue: 0);
@@ -22,11 +16,7 @@ namespace Teexy.DAL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "IsActive",
-                table: "Challenges");
-
-            migrationBuilder.DropColumn(
-                name: "JoinersCount",
+                name: "Category",
                 table: "Challenges");
         }
     }

@@ -2,22 +2,21 @@
 
 namespace Teexy.DAL.Migrations
 {
-    public partial class likesCount : Migration
+    public partial class Six : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "LikesCount",
-                table: "ChallengeProofs",
-                nullable: false,
-                defaultValue: 0);
+                name: "QuotaCount",
+                table: "Challenges",
+                nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "LikesCount",
-                table: "ChallengeProofs");
+                name: "QuotaCount",
+                table: "Challenges");
         }
     }
 }

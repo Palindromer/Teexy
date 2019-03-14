@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Teexy.Models
 {
-	public class User : IdentityUser<string>
+	public class User : IdentityUser
 	{
 		public string Name { get; set; }
 
@@ -17,7 +17,9 @@ namespace Teexy.Models
 		/// <summary>
 		/// Id of avatar-photo.
 		/// </summary>
-		public int AvatarFileId { get; set; }
+		public int? AvatarFileId { get; set; }
+
+		public File AvatarFile { get; set; }
 
 		/// <summary>
 		/// Challenges that user has in progress or done.

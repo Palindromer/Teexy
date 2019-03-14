@@ -8,7 +8,7 @@ namespace Teexy.DAL
 {
 	public class TeexyDBInitializer
 	{
-		public void Seed(RepositoryContext context)
+		public void Seed(TeexyContext context)
 		{
 			context.Database.EnsureDeleted();
 			context.Database.EnsureCreated();

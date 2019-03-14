@@ -2,10 +2,12 @@ using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 using Teexy.DAL;
 using Teexy.Mapping;
 using Teexy.Models;
@@ -27,12 +29,7 @@ namespace Teexy
 		{
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-			services.AddSingleton<RepositoryContextFactory, RepositoryContextFactory>();
-
-			//var connStr = Configuration.GetConnectionString("DefaultConnection");
-			//var context = new RepositoryContextFactory().CreateDbContext();
-			//new TeexyDBInitializer().Seed(context);
-
+			services.AddSingleton(new TeexyContextFactory().CreateDbContext());
 
 			services.AddSingleton<ChallengeRepository>();
 			services.AddSingleton<FileRepository>();
@@ -41,9 +38,14 @@ namespace Teexy
 			Mapper.Initialize(cfg => cfg.AddProfile<MappingProfile>());
 			services.AddAutoMapper();
 
-			services.AddDefaultIdentity<User>()
-				.AddEntityFrameworkStores<RepositoryContext>();
+			services.AddDefaultIdentity<User>(opt => {
+				opt.Password.RequireUppercase = false;
+			}).AddEntityFrameworkStores<TeexyContext>();
 
+			services.AddSwaggerGen(c =>
+			{
+				c.SwaggerDoc("v1", new Info { Title = "Contacts API", Version = "v1" });
+			});
 
 			// In production, the React files will be served from this directory
 			services.AddSpaStaticFiles(configuration =>
@@ -55,11 +57,9 @@ namespace Teexy
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
-			app.UseDeveloperExceptionPage();
-
 			if (env.IsDevelopment())
 			{
-
+				app.UseDeveloperExceptionPage();
 			}
 			else
 			{
@@ -79,6 +79,12 @@ namespace Teexy
 				routes.MapRoute(
 					name: "default",
 					template: "api/{controller}/{action=Index}/{id?}");
+			});
+
+			app.UseSwagger();
+			app.UseSwaggerUI(c =>
+			{
+				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Contacts API V1");
 			});
 
 			app.UseSpa(spa =>

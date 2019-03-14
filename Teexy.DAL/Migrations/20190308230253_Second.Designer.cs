@@ -8,9 +8,9 @@ using Teexy.DAL;
 
 namespace Teexy.DAL.Migrations
 {
-    [DbContext(typeof(RepositoryContext))]
-    [Migration("20190303041845_Files and Proofs")]
-    partial class FilesandProofs
+    [DbContext(typeof(TeexyContext))]
+    [Migration("20190308230253_Second")]
+    partial class Second
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -61,26 +61,6 @@ namespace Teexy.DAL.Migrations
                     b.ToTable("ChallengeDecriptions");
                 });
 
-            modelBuilder.Entity("Teexy.Models.ChallengeProof", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("ChallengeId");
-
-                    b.Property<int>("FileId");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ChallengeId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ChallengeProofs");
-                });
-
             modelBuilder.Entity("Teexy.Models.File", b =>
                 {
                     b.Property<int>("Id")
@@ -101,6 +81,8 @@ namespace Teexy.DAL.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("AccessFailedCount");
+
+                    b.Property<int?>("AvatarFileId");
 
                     b.Property<string>("ConcurrencyStamp");
 
@@ -134,6 +116,8 @@ namespace Teexy.DAL.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AvatarFileId");
+
                     b.ToTable("Users");
                 });
 
@@ -143,6 +127,12 @@ namespace Teexy.DAL.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int?>("ChallengeId");
+
+                    b.Property<int>("CommentCount");
+
+                    b.Property<int>("LikesCount");
+
+                    b.Property<int>("ProofFileId");
 
                     b.Property<int>("Status");
 
@@ -157,6 +147,44 @@ namespace Teexy.DAL.Migrations
                     b.ToTable("UserChallenges");
                 });
 
+            modelBuilder.Entity("Teexy.Models.UserChallengeComment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Text");
+
+                    b.Property<int?>("UserChallengeId");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserChallengeId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserChallengeComments");
+                });
+
+            modelBuilder.Entity("Teexy.Models.UserChallengeLike", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("UserChallengeId");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserChallengeId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserChallengeLikes");
+                });
+
             modelBuilder.Entity("Teexy.Models.ChallengeDecription", b =>
                 {
                     b.HasOne("Teexy.Models.Challenge")
@@ -164,15 +192,11 @@ namespace Teexy.DAL.Migrations
                         .HasForeignKey("ChallengeId");
                 });
 
-            modelBuilder.Entity("Teexy.Models.ChallengeProof", b =>
+            modelBuilder.Entity("Teexy.Models.User", b =>
                 {
-                    b.HasOne("Teexy.Models.Challenge", "Challenge")
+                    b.HasOne("Teexy.Models.File", "AvatarFile")
                         .WithMany()
-                        .HasForeignKey("ChallengeId");
-
-                    b.HasOne("Teexy.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("AvatarFileId");
                 });
 
             modelBuilder.Entity("Teexy.Models.UserChallenge", b =>
@@ -183,6 +207,28 @@ namespace Teexy.DAL.Migrations
 
                     b.HasOne("Teexy.Models.User", "User")
                         .WithMany("Challenges")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("Teexy.Models.UserChallengeComment", b =>
+                {
+                    b.HasOne("Teexy.Models.UserChallenge", "UserChallenge")
+                        .WithMany("Comments")
+                        .HasForeignKey("UserChallengeId");
+
+                    b.HasOne("Teexy.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("Teexy.Models.UserChallengeLike", b =>
+                {
+                    b.HasOne("Teexy.Models.UserChallenge", "UserChallenge")
+                        .WithMany("Likes")
+                        .HasForeignKey("UserChallengeId");
+
+                    b.HasOne("Teexy.Models.User", "User")
+                        .WithMany()
                         .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618

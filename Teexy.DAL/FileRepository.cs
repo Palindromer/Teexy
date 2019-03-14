@@ -8,20 +8,20 @@ namespace Teexy.DAL
 {
 	public class FileRepository : BaseRepository
 	{
-		public FileRepository(RepositoryContextFactory contextFactory) : base(contextFactory)
+		public FileRepository(TeexyContextFactory contextFactory) : base(contextFactory)
 		{
 		}
 
 		public async Task<File> Get(int id)
 		{
-			var file = await RepositoryContext.Files.FindAsync(id);
+			var file = await DbContext.Files.FindAsync(id);
 			return file;
 		}
 
 		public async Task Save(File file)
 		{
-			await RepositoryContext.Files.AddAsync(file);
-			await RepositoryContext.SaveChangesAsync();
+			await DbContext.Files.AddAsync(file);
+			await DbContext.SaveChangesAsync();
 		}
 	}
 }

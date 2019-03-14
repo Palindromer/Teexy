@@ -10,7 +10,7 @@ namespace Teexy.Mapping
 {
 	public class MappingProfile : Profile
 	{
-		private string ToFileUrl(int fileId) => $"/api/files/{fileId}";
+		private string ToFileUrl(int? fileId) => fileId == null ? null : $"/api/files/{fileId}";
 
 		public MappingProfile()
 		{

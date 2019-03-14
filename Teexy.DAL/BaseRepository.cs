@@ -4,14 +4,14 @@
 	{
 		protected string ConnectionString { get; }
 
-		protected RepositoryContextFactory ContextFactory { get; }
+		protected TeexyContextFactory ContextFactory { get; }
 
-		protected RepositoryContext RepositoryContext { get; }
+		protected TeexyContext DbContext { get; }
 
-		public BaseRepository(RepositoryContextFactory contextFactory)
+		public BaseRepository(TeexyContextFactory contextFactory)
 		{
 			ContextFactory = contextFactory;
-			RepositoryContext = contextFactory.CreateDbContext();
+			DbContext = contextFactory.CreateDbContext();
 		}
 	}
 }

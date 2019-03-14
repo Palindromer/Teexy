@@ -10,7 +10,7 @@ namespace Teexy.DAL
 {
 	public class ChallengeRepository : BaseRepository
 	{
-		public ChallengeRepository(RepositoryContextFactory contextFactory)
+		public ChallengeRepository(TeexyContextFactory contextFactory)
 			: base(contextFactory)
 		{
 		}
@@ -18,38 +18,29 @@ namespace Teexy.DAL
 
 		public async Task<List<Challenge>> GetAll()
 		{
-			using (var context = ContextFactory.CreateDbContext())
-			{
-				var result = await context.Challenges
-					.Include(ch => ch.Descriptions)
-					.ToListAsync();
-				return result;
-			}
+			var result = await DbContext.Challenges
+				.Include(ch => ch.Descriptions)
+				.ToListAsync();
+			return result;
 		}
 
 		public async Task<Challenge> Get(int challengeId)
 		{
-			using (var context = ContextFactory.CreateDbContext())
-			{
-				var result = await context.Challenges
-					.Include(ch => ch.Descriptions)
-					.SingleOrDefaultAsync(ch => ch.Id == challengeId);
-				return result;
-			}
+			var result = await DbContext.Challenges
+				.Include(ch => ch.Descriptions)
+				.SingleOrDefaultAsync(ch => ch.Id == challengeId);
+			return result;
 		}
 
 		public async Task Save(Challenge challenge)
 		{
-			using (var context = ContextFactory.CreateDbContext(ConnectionString))
-			{
-				var result = await context.Challenges.AddAsync(challenge);
-				await context.SaveChangesAsync();
-			}
+			var result = await DbContext.Challenges.AddAsync(challenge);
+			await DbContext.SaveChangesAsync();
 		}
 
 		public async Task<List<UserChallenge>> GetProofs(int challengeId)
 		{
-			var proofs = await RepositoryContext.UserChallenges
+			var proofs = await DbContext.UserChallenges
 				.Where(uch => uch.Challenge.Id == challengeId)
 				.Include(uch => uch.User)
 				.ToListAsync();
