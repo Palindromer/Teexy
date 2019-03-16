@@ -1,6 +1,6 @@
 ﻿namespace Teexy.Models
 {
-	public class UserChallengeComment
+	public class UserChallengeComment : IEntity<int>
 	{
 		public int Id { get; set; }
 

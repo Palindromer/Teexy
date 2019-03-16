@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Teexy</name>
+    </assembly>
+    <members>
+        <member name="M:Teexy.Controllers.ChallengesController.Index">
+            <summary>
+            Get all challenges.
+            </summary>
+        </member>
+        <member name="M:Teexy.Controllers.ChallengesController.Get(System.Int32)">
+            <summary>
+            Get challenge by id.
+            </summary>
+            <param name="id">Id of challenge.</param>
+        </member>
+        <member name="M:Teexy.Controllers.ChallengesController.New(Teexy.Models.Challenge)">
+            <summary>
+            Create new challenge.
+            </summary>
+        </member>
+        <member name="M:Teexy.Controllers.ChallengesController.GetProofs(System.Int32)">
+            <summary>
+            Get all proofs of the challenge.
+            </summary>
+            <param name="challengeId">Id of challenge.</param>
+        </member>
+        <member name="M:Teexy.Controllers.ChallengesController.TakeChallenge(System.Int32)">
+            <summary>
+            Mark the challenge as taken by current user.
+            </summary>
+            <param name="challengeId">Id of challenge.</param>
+        </member>
+        <member name="M:Teexy.Controllers.ChallengesController.DoneChallenge(System.Int32,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Mark the challenge as done by current user.
+            </summary>
+            <param name="challengeId">Id of challenge.</param>
+            <param name="proofFile">The file thant proves the execution of the challenge.</param>
+        </member>
+        <member name="M:Teexy.Controllers.FilesController.Get(System.Int32)">
+            <summary>
+            Get file by id.
+            </summary>
+        </member>
+        <member name="M:Teexy.Controllers.FilesController.Upload(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Upload file to the server.
+            </summary>
+        </member>
+        <member name="M:Teexy.Controllers.UsersController.My">
+            <summary>
+            Get current user.
+            </summary>
+        </member>
+        <member name="M:Teexy.Controllers.UsersController.GetUser(System.String)">
+            <summary>
+            Get user by id.
+            </summary>
+        </member>
+        <member name="M:Teexy.Controllers.UsersController.UpdateAvatar(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Update personal photo of current user.
+            </summary>
+            <param name="file">Personal photo.</param>
+        </member>
+        <member name="P:Teexy.ViewModels.UserChallengeViewModel.FileUrl">
+            <summary>
+            Proof.
+            </summary>
+        </member>
+        <member name="P:Teexy.ViewModels.UserChallengeViewModel.Challenge">
+            <summary>
+            Wich challenge was done?
+            </summary>
+        </member>
+        <member name="P:Teexy.ViewModels.UserChallengeViewModel.User">
+            <summary>
+            Who performed the challenge?
+            </summary>
+        </member>
+    </members>
+</doc>

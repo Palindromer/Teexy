@@ -1,17 +1,15 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Swashbuckle.AspNetCore.Swagger;
+using Teexy.Builders;
 using Teexy.DAL;
+using Teexy.Extensions.ApplicationBuilder;
+using Teexy.Extensions.ServiceCollection;
 using Teexy.Mapping;
-using Teexy.Models;
-using Teexy.ViewModels;
 
 namespace Teexy
 {
@@ -29,23 +27,18 @@ namespace Teexy
 		{
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+			services.AddSingleton(new TeexyContextFactory());
 			services.AddSingleton(new TeexyContextFactory().CreateDbContext());
 
-			services.AddSingleton<ChallengeRepository>();
-			services.AddSingleton<FileRepository>();
-			services.AddSingleton<UserRepository>();
+			services.AddTeexyRepositories();
+
+			services.AddSingleton<UrlBuilder>();
 
 			Mapper.Initialize(cfg => cfg.AddProfile<MappingProfile>());
 			services.AddAutoMapper();
 
-			services.AddDefaultIdentity<User>(opt => {
-				opt.Password.RequireUppercase = false;
-			}).AddEntityFrameworkStores<TeexyContext>();
-
-			services.AddSwaggerGen(c =>
-			{
-				c.SwaggerDoc("v1", new Info { Title = "Contacts API", Version = "v1" });
-			});
+			services.AddTeexyIdentity();
+			services.AddTeexySwagger();
 
 			// In production, the React files will be served from this directory
 			services.AddSpaStaticFiles(configuration =>
@@ -81,11 +74,7 @@ namespace Teexy
 					template: "api/{controller}/{action=Index}/{id?}");
 			});
 
-			app.UseSwagger();
-			app.UseSwaggerUI(c =>
-			{
-				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Contacts API V1");
-			});
+			app.UseTeexySwagger();
 
 			app.UseSpa(spa =>
 			{

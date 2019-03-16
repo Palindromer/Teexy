@@ -1,16 +1,31 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Teexy.Models
 {
-	public class UserChallenge
+	public class UserChallenge : IEntity<int>
 	{
 		public int Id { get; set; }
 
+		public string UserId { get; set; }
+
 		public User User { get; set; }
+
+		public int ChallengeId { get; set; }
 
 		public Challenge Challenge { get; set; }
 
 		public ChallengeStatus Status { get; set; }
+
+		/// <summary>
+		/// When challenge was taken.
+		/// </summary>
+		public DateTime TakenDateTime { get; set; }
+
+		/// <summary>
+		/// When challenge was done.
+		/// </summary>
+		public DateTime DoneDateTime { get; set; }
 
 		public int? ProofFileId { get; set; }
 

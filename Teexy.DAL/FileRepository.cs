@@ -6,22 +6,10 @@ using Teexy.Models;
 
 namespace Teexy.DAL
 {
-	public class FileRepository : BaseRepository
+	public class FileRepository : EFGenericRepository<File>
 	{
-		public FileRepository(TeexyContextFactory contextFactory) : base(contextFactory)
+		public FileRepository(TeexyContext teexyContext) : base(teexyContext)
 		{
-		}
-
-		public async Task<File> Get(int id)
-		{
-			var file = await DbContext.Files.FindAsync(id);
-			return file;
-		}
-
-		public async Task Save(File file)
-		{
-			await DbContext.Files.AddAsync(file);
-			await DbContext.SaveChangesAsync();
 		}
 	}
 }

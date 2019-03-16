@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System.Collections.Generic;
 using Teexy.Models;
 
 namespace Teexy.ViewModels
@@ -17,6 +18,9 @@ namespace Teexy.ViewModels
 		/// </summary>
 		public Challenge Challenge { get; set; }
 
+		public ChallengeStatus Status { get; set; }
+
+
 		/// <summary>
 		/// Who performed the challenge?
 		/// </summary>
@@ -25,5 +29,9 @@ namespace Teexy.ViewModels
 		public int LikesCount { get; set; }
 
 		public int CommentsCount { get; set; }
+
+		public List<UserChallengeLike> Likes { get; set; }
+
+		public List<UserChallengeComment> Comments { get; set; }
 	}
 }

@@ -1,17 +1,14 @@
-﻿namespace Teexy.DAL
+﻿using System;
+
+namespace Teexy.DAL
 {
 	public abstract class BaseRepository
 	{
-		protected string ConnectionString { get; }
+		protected TeexyContext Context { get; }
 
-		protected TeexyContextFactory ContextFactory { get; }
-
-		protected TeexyContext DbContext { get; }
-
-		public BaseRepository(TeexyContextFactory contextFactory)
+		public BaseRepository(TeexyContext dbContext)
 		{
-			ContextFactory = contextFactory;
-			DbContext = contextFactory.CreateDbContext();
+			Context = dbContext;
 		}
 	}
 }

@@ -10,6 +10,11 @@
     <UserSecretsId>2bd7028f-9aa5-4ac1-a1a1-79704432bdc6</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>Teexy.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
@@ -29,6 +34,15 @@
   <ItemGroup>
     <ProjectReference Include="..\Teexy.DAL\Teexy.DAL.csproj" />
     <ProjectReference Include="..\Teexy.Models\Teexy.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Teexy.Models.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Teexy.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

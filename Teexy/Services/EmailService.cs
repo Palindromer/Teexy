@@ -1,4 +1,5 @@
 ﻿using MailKit.Net.Smtp;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using MimeKit;
 using System;
 using System.Collections.Generic;
@@ -7,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Teexy.Services
 {
-	public class EmailService
+	public class EmailService : IEmailSender
 	{
 		private string _emailAddress = "login@yandex.ru";
 		private string _emailPassword = "login@yandex.ru";
 		private string _smtpHost = "smtp.yandex.ru";
 		private int _smtpPort = 25;
 
-		public async Task SendEmailAsync(string email, string subject, string message)
+		public async Task SendEmailAsync(string email, string subject, string htmlMessage)
 		{
 			var emailMessage = new MimeMessage();
 
@@ -23,7 +24,7 @@ namespace Teexy.Services
 			emailMessage.Subject = subject;
 			emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
 			{
-				Text = message
+				Text = htmlMessage
 			};
 
 			using (var client = new SmtpClient())

@@ -9,40 +9,39 @@ namespace Teexy.DAL
 	{
 
 
-		public UserRepository(TeexyContextFactory contextFactory)
-			: base(contextFactory)
+		public UserRepository(TeexyContext teexyContext) : base(teexyContext)
 		{
 		}
 
 		public async Task<IEnumerable<User>> GetAll()
 		{
-			var result = await DbContext.Users.ToListAsync();
+			var result = await Context.Users.ToListAsync();
 			return result;
 		}
 
 		public async Task<User> Get(string id)
 		{
-			return await DbContext.Users.FindAsync(id);
+			return await Context.Users.FindAsync(id);
 		}
 
 		public async Task Create(User item)
 		{
-			DbContext.Users.Add(item);
-			await DbContext.SaveChangesAsync();
+			Context.Users.Add(item);
+			await Context.SaveChangesAsync();
 		}
 
 		public async Task Update(User item)
 		{
-			DbContext.Entry(item).State = EntityState.Modified;
-			await DbContext.SaveChangesAsync();
+			Context.Entry(item).State = EntityState.Modified;
+			await Context.SaveChangesAsync();
 		}
 
 		public async Task Delete(int id)
 		{
-			User user = DbContext.Users.Find(id);
+			User user = Context.Users.Find(id);
 			if (user != null)
-				DbContext.Users.Remove(user);
-			await DbContext.SaveChangesAsync();
+				Context.Users.Remove(user);
+			await Context.SaveChangesAsync();
 		}
 	}
 

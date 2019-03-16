@@ -8,39 +8,32 @@ using Teexy.Models;
 
 namespace Teexy.DAL
 {
-	public class ChallengeRepository : BaseRepository
+	public class ChallengeRepository : EFGenericRepository<Challenge>
 	{
-		public ChallengeRepository(TeexyContextFactory contextFactory)
-			: base(contextFactory)
+		public ChallengeRepository(TeexyContext teexyContext) : base(teexyContext)
 		{
 		}
 
 
-		public async Task<List<Challenge>> GetAll()
+		public new async Task<List<Challenge>> GetAll()
 		{
-			var result = await DbContext.Challenges
+			var result = await Context.Challenges
 				.Include(ch => ch.Descriptions)
 				.ToListAsync();
 			return result;
 		}
 
-		public async Task<Challenge> Get(int challengeId)
+		public new async Task<Challenge> FindById(int challengeId)
 		{
-			var result = await DbContext.Challenges
+			var result = await Context.Challenges
 				.Include(ch => ch.Descriptions)
 				.SingleOrDefaultAsync(ch => ch.Id == challengeId);
 			return result;
 		}
 
-		public async Task Save(Challenge challenge)
-		{
-			var result = await DbContext.Challenges.AddAsync(challenge);
-			await DbContext.SaveChangesAsync();
-		}
-
 		public async Task<List<UserChallenge>> GetProofs(int challengeId)
 		{
-			var proofs = await DbContext.UserChallenges
+			var proofs = await Context.UserChallenges
 				.Where(uch => uch.Challenge.Id == challengeId)
 				.Include(uch => uch.User)
 				.ToListAsync();

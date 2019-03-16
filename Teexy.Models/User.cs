@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Teexy.Models
 {
-	public class User : IdentityUser
+	public class User : IdentityUser, IEntity<string>
 	{
 		public string Name { get; set; }
 

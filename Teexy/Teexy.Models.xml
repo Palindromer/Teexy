@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Teexy.Models</name>
+    </assembly>
+    <members>
+        <member name="T:Teexy.Models.Challenge">
+            <summary>
+            Challenge.
+            </summary>
+        </member>
+        <member name="P:Teexy.Models.Challenge.Title">
+            <summary>
+            Title of challenge.
+            </summary>
+        </member>
+        <member name="P:Teexy.Models.Challenge.Description">
+            <summary>
+            Description of challenge.
+            </summary>
+        </member>
+        <member name="P:Teexy.Models.Challenge.Descriptions">
+            <summary>
+            List of descriptions.
+            </summary>
+        </member>
+        <member name="P:Teexy.Models.Challenge.Score">
+            <summary>
+            The amount of points the user gets after execution. 
+            </summary>
+        </member>
+        <member name="P:Teexy.Models.Challenge.JoinersCount">
+            <summary>
+            Count of users which took this challenge.
+            </summary>
+        </member>
+        <member name="P:Teexy.Models.Challenge.QuotaCount">
+            <summary>
+            Count of users which can execute this challenge.
+            </summary>
+        </member>
+        <member name="P:Teexy.Models.Challenge.IsActive">
+            <summary>
+            Determines whether this challenge is active.
+            </summary>
+        </member>
+        <member name="P:Teexy.Models.Challenge.Category">
+            <summary>
+            Category of challenge.
+            </summary>
+        </member>
+        <member name="T:Teexy.Models.ChallengeCategory">
+            <summary>
+            Category of challenge.
+            </summary>
+        </member>
+        <member name="P:Teexy.Models.User.Score">
+            <summary>
+            Rating.
+            </summary>
+        </member>
+        <member name="P:Teexy.Models.User.AvatarFileId">
+            <summary>
+            Id of avatar-photo.
+            </summary>
+        </member>
+        <member name="P:Teexy.Models.User.Challenges">
+            <summary>
+            Challenges that user has in progress or done.
+            </summary>
+        </member>
+        <member name="P:Teexy.Models.UserChallenge.TakenDateTime">
+            <summary>
+            When challenge was taken.
+            </summary>
+        </member>
+        <member name="P:Teexy.Models.UserChallenge.DoneDateTime">
+            <summary>
+            When challenge was done.
+            </summary>
+        </member>
+        <member name="P:Teexy.Models.UserChallengeComment.User">
+            <summary>
+            Who wrote the comment?
+            </summary>
+        </member>
+        <member name="P:Teexy.Models.UserChallengeComment.UserChallenge">
+            <summary>
+            What was commented?
+            </summary>
+        </member>
+        <member name="P:Teexy.Models.UserChallengeComment.Text">
+            <summary>
+            Text of comment.
+            </summary>
+        </member>
+        <member name="P:Teexy.Models.UserChallengeLike.User">
+            <summary>
+            Who likes?
+            </summary>
+        </member>
+        <member name="P:Teexy.Models.UserChallengeLike.UserChallenge">
+            <summary>
+            What was liked?
+            </summary>
+        </member>
+    </members>
+</doc>
